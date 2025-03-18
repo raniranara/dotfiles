@@ -1,20 +1,5 @@
 local wezterm = require 'wezterm'
 
--- Function to get Wi-Fi name (truncated)
-local function get_wifi_name()
-  local success, stdout = wezterm.run_child_process({
-    "powershell", "-NoProfile", "-Command",
-    "(Get-NetConnectionProfile | Where-Object { $_.InterfaceAlias -like '*Wi-Fi*' }).Name"
-  })
-
-  if success and stdout ~= "" then
-    local wifi = stdout:gsub("\n", ""):sub(1, 10) -- Trim and limit to 10 characters
-    return wifi ~= "" and "" .. wifi or "" -- Hide if empty
-  else
-    return ""
-  end
-end
-
 -- Function to get battery percentage
 local function get_battery()
   local success, stdout = wezterm.run_child_process({
@@ -30,22 +15,21 @@ local function get_battery()
   end
 end
 
--- Update right status bar with Wi-Fi, Battery, and Time
+-- Update right status bar with Battery and Time
 wezterm.on("update-right-status", function(window, pane)
-  local wifi_name = get_wifi_name()
   local battery = get_battery()
   local time = wezterm.strftime("%H:%M:%S")
 
   -- Format the right status bar with spacing
   window:set_right_status(wezterm.format({
-    { Text = string.format(" %s | %s | %s ", wifi_name, battery, time) },
+    { Text = string.format(" %s | %s ", battery, time) },
   }))
 end)
 
 -- Format tab titles with numbers
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   return {
-    { Text = string.format(" [%d] ", tab.tab_index + 1) } -- Numbers tabs from 1 onwards
+    { Text = string.format(" [%d] ", tab.tab_index + 1) }
   }
 end)
 
@@ -56,18 +40,14 @@ return {
     Write-Host " /\_/\  " -ForegroundColor Yellow
     Write-Host "( o.o ) " -ForegroundColor Yellow
     Write-Host " > ^ <  " -ForegroundColor Yellow
-    Write-Host "ranranxoxo" -ForegroundColor Yellow
+    Write-Host "ranran" -ForegroundColor Yellow
   ]] },
 
   initial_rows = 30,
   initial_cols = 120,
 
-
-
-
-
   font = wezterm.font("MesloLGMDZ Nerd Font"),
-  font_size = 12.0,
+  font_size = 13.0,
   
   enable_wayland = true,
   front_end = "OpenGL", 
@@ -75,7 +55,6 @@ return {
   -- Hide the window title bar
   window_decorations = "RESIZE",
   window_background_opacity = 1.0, -- transparency
-
 
   -- Cursor customization
   cursor_blink_rate = 500,
@@ -143,6 +122,19 @@ return {
     right = 10,
     top = 5,
     bottom = 5,
+  },
+
+  -- Keybindings for switching tabs using Alt+Number
+  keys = {
+    { key = "1", mods = "ALT", action = wezterm.action.ActivateTab(0) },
+    { key = "2", mods = "ALT", action = wezterm.action.ActivateTab(1) },
+    { key = "3", mods = "ALT", action = wezterm.action.ActivateTab(2) },
+    { key = "4", mods = "ALT", action = wezterm.action.ActivateTab(3) },
+    { key = "5", mods = "ALT", action = wezterm.action.ActivateTab(4) },
+    { key = "6", mods = "ALT", action = wezterm.action.ActivateTab(5) },
+    { key = "7", mods = "ALT", action = wezterm.action.ActivateTab(6) },
+    { key = "8", mods = "ALT", action = wezterm.action.ActivateTab(7) },
+    { key = "9", mods = "ALT", action = wezterm.action.ActivateTab(8) },
   },
 }
 
