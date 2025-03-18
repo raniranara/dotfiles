@@ -59,7 +59,13 @@ return {
     Write-Host "ranranxoxo" -ForegroundColor Yellow
   ]] },
 
-  
+  initial_rows = 30,
+  initial_cols = 120,
+
+
+
+
+
   font = wezterm.font("MesloLGMDZ Nerd Font"),
   font_size = 12.0,
   
@@ -68,7 +74,7 @@ return {
 
   -- Hide the window title bar
   window_decorations = "RESIZE",
-  window_background_opacity =1.0, -- transparency
+  window_background_opacity = 1.0, -- transparency
 
 
   -- Cursor customization
