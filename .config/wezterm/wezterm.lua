@@ -54,7 +54,7 @@ return {
 
   -- Hide the window title bar
   window_decorations = "RESIZE",
-  window_background_opacity = 1.0, -- transparency
+  window_background_opacity = 0.8, -- transparency
 
   -- Cursor customization
   cursor_blink_rate = 500,
@@ -118,10 +118,10 @@ return {
 
   -- Padding Customization 
   window_padding = {
-    left = 10,
-    right = 10,
-    top = 5,
-    bottom = 5,
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
   },
 
   -- Keybindings for switching tabs using Alt+Number

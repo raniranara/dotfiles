@@ -26,7 +26,7 @@ return {
             palette_overrides = {dark0_hard = "#0e1018"},
             overrides = {},
             dim_inactive = false,
-            transparent_mode = false,
+            transparent_mode = true,
         })
         vim.cmd("colorscheme gruvbox")
     end,
