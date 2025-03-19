@@ -45,7 +45,6 @@ return {
 
   initial_rows = 30,
   initial_cols = 120,
-
   font = wezterm.font("MesloLGMDZ Nerd Font"),
   font_size = 13.0,
   
@@ -54,7 +53,7 @@ return {
 
   -- Hide the window title bar
   window_decorations = "RESIZE",
-  window_background_opacity = 0.8, -- transparency
+  window_background_opacity = 0.9, -- transparency
 
   -- Cursor customization
   cursor_blink_rate = 500,
