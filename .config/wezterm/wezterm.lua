@@ -1,3 +1,5 @@
+--rani's wezterm cfg
+
 local wezterm = require 'wezterm'
 
 -- Function to get battery percentage

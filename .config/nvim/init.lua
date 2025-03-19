@@ -23,6 +23,8 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.undofile = true
 
+
+-- test LOL
 -- Custom Keymaps
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jk", "<Esc>", { desc = "exit insert mode like sonic!"})
