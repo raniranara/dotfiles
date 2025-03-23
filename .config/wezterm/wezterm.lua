@@ -48,7 +48,7 @@ return {
   initial_rows = 30,
   initial_cols = 120,
   font = wezterm.font("MesloLGMDZ Nerd Font"),
-  font_size = 13.0,
+  font_size = 12.0,
   
   enable_wayland = true,
   front_end = "OpenGL", 
@@ -70,7 +70,7 @@ return {
       background = "#1E1E1E",
 
       active_tab = {
-        bg_color = "#FFA500",
+        bg_color = "#FFFFFF",
         fg_color = "#1E1E1E",
         intensity = "Bold",
       },

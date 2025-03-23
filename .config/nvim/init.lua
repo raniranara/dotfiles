@@ -32,6 +32,19 @@ vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>x", ":x<CR>", { desc = "Save and exit" })
 vim.keymap.set("n", "<leader>qq", ":qa!<CR>", { desc = "Quit without saving" })
 
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.pdf"},
+  callback = function()
+    local filename = vim.fn.expand("%:p")
+    vim.cmd("bdelete") -- Close the buffer
+    
+    if vim.fn.has("win32") == 1 then
+      vim.loop.spawn("sioyek", {args = {filename}, detach = true})
+    else
+      vim.loop.spawn("sioyek", {args = {filename}, detach = true})
+    end
+  end,
+})
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
